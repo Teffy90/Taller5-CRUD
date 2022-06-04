@@ -16,4 +16,3 @@ var carousel = new bootstrap.Carousel(myCarousel, {
         return true;
         }
 }
-

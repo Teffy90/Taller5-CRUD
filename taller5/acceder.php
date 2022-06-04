@@ -52,6 +52,7 @@
                             <br/>
                             <input type="submit" class="btn btn-success btn-block" name="acceder" value="Acceder">
                             <input type="button" class="btn btn-success btn-block" name="registrarse" value="Registrarse">
+                            <a href="Registrarse.php" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true" name="registrarse" id="registrarse">Registrarse</a>
                         </div>    
                     </form>
                     </div>
