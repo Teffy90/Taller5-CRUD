@@ -42,6 +42,7 @@
                 <button type="button" class="btn btn-success" name="btnAgregar" id="btnAgregar" onclick="mostrar();">Agregar Pelicula</button>
                 <br/>
                 <br/>
+             
                 <div class="col-md-4" id="content">
                     <?php if(isset($_SESSION['mensaje'])) {?>
                         <div class="alert alert-<?= $_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
@@ -69,15 +70,15 @@
                                 </div>
                                 <div class="mb-3">
                                 <label for="duracion" class="form-label" >Duración</label>
-                                <input type="text" id="nom" name="nom" class="form-control" id="duracion" name="duracion" require>
+                                <input type="text" class="form-control" id="duracion" name="duracion" require>
                                 </div>
                                 <div class="mb-3">
                                 <label for="sinopsis" class="form-label" >Sinopsis</label>
-                                <textarea class="form-control" placeholder="Sinopsis" id="floatingTextarea2" style="height: 100px" id="sinopsis" name="sinopsis"></textarea>
+                                <textarea class="form-control" placeholder="Sinopsis" style="height: 100px" id="sinopsis" name="sinopsis"></textarea>
                                 </div>
                                 <div class="mb-3">
                                 <label for="imagen" class="form-label" >Imagen</label>
-                                <input type="file" id="nom" name="nom" class="form-control" id="imagen" name="imagen" require>
+                                <input type="file" class="form-control" id="imagen" name="imagen" require>
                                 </div>
                                 
                                 <input type="submit" class="btn btn-success btn-block" name="save" onclick="ocultar();" value="Guardar">
@@ -103,7 +104,28 @@
                     </thead>
                     <tbody>
                         <!--Aquí iria lo que va en la img index_2.php e index_3.php del ejemplo del crud -->
-                        
+                        <?php
+                        $query = "SELECT * FROM pelicula";
+                        $result = mysqli_query($conn,$query);
+                        while($row = mysqli_fetch_array($result)){?>
+                            <tr>
+                                <td><?php echo $row['#'] ?></td>
+                                <td><?php echo $row['nombre'] ?></td>
+                                <td><?php echo $row['genero'] ?></td>
+                                <td><?php echo $row['duracion'] ?></td>
+                                <td><?php echo $row['sinopsis'] ?></td>
+                                <td><?php echo $row['imagen'] ?></td>
+                                <td>
+                                    <!--no estoy seguro si es id o id_pelicula o id_genero y lo otro creo que es editar o solo quieres el boton eliminar-->
+                                    <a href="guardarPeli.php?id=<?php echo $row['id']?>" class="btn btn-primary">
+                                         <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a href="eliminar.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
