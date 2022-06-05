@@ -1,5 +1,4 @@
 <?php
-//aun sigue generando el error  que vimos 
 include("db.php");
 
 if(isset($_POST['save'])){
@@ -13,15 +12,7 @@ if(isset($_POST['save'])){
     VALUES('$nomPeli','$duracion','$sinopsis','$imagen',$genero)";
     // creo que el error es este de mysqli_query 
     $result = mysqli_query($conn,$query);
-    if (!$resutl) {
-        $_SESSION['mensaje'] = "No se pudo guardar";
-        $_SESSION['tipo_mensaje'] = "danger";
-        die("Falló consulta.");
-    }
-    else{
-        $_SESSION['mensaje'] = "Estudiante Guardado";
-        $_SESSION['tipo_mensaje'] = "success";
-    }
+   
 header("Location: peliculas.php");
 }
 ?>

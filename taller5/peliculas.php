@@ -1,4 +1,6 @@
-<?php include("db.php"); ?>
+<?php 
+    include("db.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -44,13 +46,6 @@
                 <br/>
              
                 <div class="col-md-4" id="content">
-                    <?php if(isset($_SESSION['mensaje'])) {?>
-                        <div class="alert alert-<?= $_SESSION['tipo_mensaje'];?> alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['mensaje'];?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php session_unset();}?>
-
                     <div class="card card-body">
                         <form action="guardarPeli.php" method="POST">
                             <div class="mb-3">
@@ -82,8 +77,8 @@
                                 </div>
                                 
                                 <input type="submit" class="btn btn-success btn-block" name="save" onclick="ocultar();" value="Guardar">
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div> 
                 </div>    
                 
@@ -107,20 +102,22 @@
                         <?php
                         $query = "SELECT * FROM pelicula";
                         $result = mysqli_query($conn,$query);
-                        while($row = mysqli_fetch_array($result)){?>
+                        while($row = mysqli_fetch_array($result)){
+                            $ruta_img = $row["imagen"];
+                            ?>
                             <tr>
-                                <td><?php echo $row['#'] ?></td>
-                                <td><?php echo $row['nombre'] ?></td>
-                                <td><?php echo $row['genero'] ?></td>
+                                <td><?php echo $row['id_pelicula'] ?></td>
+                                <td><?php echo $row['nombre_pelicula'] ?></td>
+                                <td><?php echo $row['id_genero'] ?></td>
                                 <td><?php echo $row['duracion'] ?></td>
                                 <td><?php echo $row['sinopsis'] ?></td>
-                                <td><?php echo $row['imagen'] ?></td>
+                                <td><img style="width: 150px;" src="imagenes/<?php echo $ruta_img; ?>"  alt="..."></td>
                                 <td>
-                                    <!--no estoy seguro si es id o id_pelicula o id_genero y lo otro creo que es editar o solo quieres el boton eliminar-->
-                                    <a href="guardarPeli.php?id=<?php echo $row['id']?>" class="btn btn-primary">
+                                    
+                                    <a href="editar.php?id=<?php echo $row['id_pelicula']?>" class="btn btn-primary">
                                          <i class="bi bi-pencil-fill"></i>
                                     </a>
-                                    <a href="eliminar.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
+                                    <a href="eliminar.php?id=<?php echo $row['id_pelicula'] ?>" class="btn btn-danger">
                                         <i class="bi bi-trash-fill"></i>
                                     </a>
                                 </td>
