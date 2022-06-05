@@ -1,41 +1,13 @@
 <?php
 include("db.php");
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
-    $query = "SELECT * FROM pelicula WHERE id = $id";
-    $result = mysqli_query($conn,$query);
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_array($result);
-        $id = $row['id_genero'];
-        $nom = $row['nombre_pelicula'];
-        $dura = $row['duracion'];
-        $sinop = $row['sinopsis'];
-        $img = $row['imagen'];
-    }
-}
-if(isset($_POST['edit'])){
-    $id = $row['id'];
-    $nom = $row['nombre_pelicula'];
-    $dura = $row['duracion'];
-    $sinop = $row['sinopsis'];
-    $img = $row['imagen'];
-    $query = "UPDATE pelicula SET id_genero=$id, nombre_pelicula=$nom, duracion=$dura, sinogsis=$sinog, imagen=$img
-    WHERE id = $id";
-    $result = mysqli_query($conn,$query);
-    if(!$result) {
-        $_SESSION['mensaje'] = "No se pudo editar la pelicula";
-        $_SESSION['tipo_mensaje'] = "danger";
-        //die("Fallo consulta");
-    }
-    else{
-        $_SESSION['mensaje'] = "pelicula editada";
-        $_SESSION['tipo_mensaje'] = "success";
-    }
 
-    header("Location: peliculas.php");
-}
+$id=$_GET['id'];
+
+$sql="SELECT * FROM pelicula WHERE id_pelicula='$id'";
+$query = mysqli_query($conn,$sql);
+
+$row=mysqli_fetch_array($query);
 ?>
-<?php include("db.php"); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -70,66 +42,48 @@ if(isset($_POST['edit'])){
     </nav>
     <section>
         <div class= "container p-4">
-            <h2>Películas</h2>
-            <p>A continuación se va a mostrar la información de todas las películas disponibles en el catálogo.</p>
+            <h2>Editar peliculas</h2>
+            <p>A continuación puede editar el cátalogo de las peliculas.</p>
             <!--Agregar un evento que cuando se de click al boton muestre el formulario de agrergar la pelicula -->
-            <input type="button" class="btn btn-success btn-block" name="agregar_peli" ide="agregar_peli" value="Agregar Pelicula">
             <br/>
             <br/>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Genero</th>
-                <th scope="col">Duración</th>
-                <th scope="col">Sinopsis</th>
-                <th scope="col">Imagen</th>
-				<div class="container p-4">
-    <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="card card-body">
-                <form action="editar.php?id=<?php echo $id; ?>" method="POST">
-                    <div class="mb-3">
-                        <label for="iden" class="form-label">nombre_pelicula:</label>
-                        <input type="text" id="nom" name="nom" class="form-control" 
-                        value="<?php echo $nom; ?>" require>
+			<div class="container p-4">
+                <div class="row">
+                    <div class="col-md-4 mx-auto">
+                        <div class="card card-body">
+                            <form action="modificar.php?id=<?php echo $id; ?>" method="POST">
+                                <div class="mb-3">
+                                    <label for="update_nomPeli" class="form-label">Nombre Pelicula</label>
+                                    <input type="text" id="update_nomPeli" name="update_nomPeli" class="form-control" value="<?php echo $row['nombre_pelicula']?>" require>
+                                </div>
+                                <select class="form-select" aria-label="Default select example" id="update_genero" name="update_genero" value="<?php echo $row['id_genero']?>" require>
+                                    <?php
+                                        $query = $conn -> query ("SELECT * FROM genero");
+                                        while ($valores = mysqli_fetch_array($query)) {
+                                            echo '<option value="'.$valores['id_genero'].'">'.$valores['genero'].'</option>';
+                                        }
+                                    ?>                                  
+                                </select>
+                                <div class="mb-3">
+                                    <label for="update_duracion" class="form-label" >Duración</label>
+                                    <input type="text" class="form-control" id="update_duracion" name="update_duracion" value="<?php echo $row['duracion']?>" require>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="update_sinopsis" class="form-label" >Sinopsis</label>
+                                    <input type="text" class="form-control" id="update_sinopsis"  name="update_sinopsis" value="<?php echo $row['sinopsis']?>" require>
+                                    
+                                </div>
+                                <div class="mb-3">
+                                    <label for="update_imagen" class="form-label" >Imagen</label>
+                                    <input type="file" class="form-control" id="update_imagen" name="update_imagen" value="<?php echo $row['imagen']?>" require>
+                                </div>
+                                    
+                                <input type="submit" class="btn btn-success btn-block" name="save"  value="Actualizar">
+                            </form>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="nom" class="form-label">Genero:</label>
-                        <input type="text" id="id_genero" name="id_genero" class="form-control" 
-                        value="<?php echo $id; ?>" require>
-                    </div>
-                    <div class="mb-3">
-                        <label for="duracion" class="form-label">Duración:</label>
-                        <input type="duration" id="dura" name="duracion" class="form-control" 
-                        value="<?php echo $dura; ?>" require>
-                    </div>
-                    <div class="mb-3">
-                        <label for="sinopsis" class="form-label">Sinopsis:</label>
-                        <input type="text" id="sinop" name="sinogsis" class="form-control" 
-                        value="<?php echo $sinog; ?>" require>
-                    </div>
-					<div class="mb-3">
-                        <label for="imagen" class="form-label">imagen:</label>
-                        <input type="img" id="img" name="imagen" class="form-control" 
-                        value="<?php echo $img; ?>" require>
-                    </div>
-                    <input type="submit" class="btn btn-success btn-block" name="edit" value="Editar">
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
-</div>    
-                <!--En la columna de acciones se agregan los iconos de editar y eliminar (cuando se de click a editar este abre una nueva pagina con el formulario para editar la peli) -->
-                <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--Aquí iria lo que va en la img index_2.php e index_3.php del ejemplo del crud -->
-                
-            </tbody>
-        </table>
         </div>
     </section>
     <footer>
