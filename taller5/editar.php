@@ -79,6 +79,7 @@ $row=mysqli_fetch_array($query);
                                 </div>
                                     
                                 <input type="submit" class="btn btn-success btn-block" name="save"  value="Actualizar">
+                                <a href="pelicular.php.php" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true" name="Cancelar" id="Cancelar">Cancelar</a>
                             </form>
                         </div>
                     </div>
@@ -86,8 +87,6 @@ $row=mysqli_fetch_array($query);
             </div>
         </div>
     </section>
-    <footer>
-    </footer>
     
 
 

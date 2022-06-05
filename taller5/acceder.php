@@ -12,25 +12,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Catálogo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="navbar-brand" href="index.php">Inico</a>
-                </li>
-                <li class="nav-item">
-                <a class="navbar-brand" href="peliculas.php">Películas</a>
-                </li>
-            </ul>
-            <a class="navbar-brand" href="acceder.php">Acceder</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Catálago</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="navbar-brand" href="index.php">Inico</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="navbar-brand" href="peliculas.php">Películas</a>
+                    </li>
+                </ul>
+                <a class="navbar-brand" href="acceder.php">Acceder</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     <section>
         <div class= "container p-4">
             <div class="row">
@@ -47,12 +47,10 @@
                             <label for="acc_contraseña" class="form-label">Contraseña</label>
                             <input type="text" id="acc_contraseña" name="acc_contraseña" class="form-control" require>
                             </div>
-                            <a class="navbar-brand" href="acceder.php">¿No recuerdas tu contraseña?</a>
                             <br/>
                             <br/>
                             <input type="submit" class="btn btn-success btn-block" name="acceder" value="Acceder">
-                            <input type="button" class="btn btn-success btn-block" name="registrarse" value="Registrarse">
-                            <a href="Registrarse.php" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true" name="registrarse" id="registrarse">Registrarse</a>
+                            <a href="registrarse.php" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true" name="registrarse" id="registrarse">Registrarse</a>
                         </div>    
                     </form>
                     </div>
@@ -61,12 +59,10 @@
             </div>
         </div>
     </section>
-    <footer>
-    </footer>
     
 
 
-    <script src="validar.js"></script>
+    <script src="prueba.js"></script>
 
 </body>
 </html>

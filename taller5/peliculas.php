@@ -127,8 +127,6 @@
                 </table>
             </div>
         </section>
-        <footer>
-        </footer>
         
         
     </body>

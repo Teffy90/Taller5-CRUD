@@ -12,11 +12,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a href="index.php" class="navbar-brand"> Catalogo de peliculas </a>
-        </div>
-    </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Catálago</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="navbar-brand" href="index.php">Inico</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="navbar-brand" href="peliculas.php">Películas</a>
+                    </li>
+                </ul>
+                <a class="navbar-brand" href="acceder.php">Acceder</a>
+                </div>
+            </div>
+        </nav>
     <div class= "container p-4">
         <div class="row">
             <div class="col-md-4">
@@ -27,6 +41,8 @@
                 </div>
             <?php session_unset();}?>
             <div class="card card-body">
+                    <h2>!Hola Nuevo Admin!</h2>
+                    <p>Ingresa tus datos para que puedas tener acceso a todos nuestros recursos </p>
                 <form action="guardarUsuario.php" method="POST">
                     <div class="mb-3">
                         <label for="iden" class="form-label">Usuario:</label>

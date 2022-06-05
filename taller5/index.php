@@ -61,7 +61,7 @@
   </button>
 </div>
 <div class= "container p-4">
-            <p>En este catalogo se encontraran diferentes tipos de pelicula de accion, comedia y terror</p>
+            <h3>En este catalogo se encontraran diferentes tipos de pelicula de accion, comedia y terror</h3>
         </div>    
     </section>
     
