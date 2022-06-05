@@ -34,6 +34,7 @@
     <section>
         <div class= "container p-4">
             <h2>Películas</h2>
+            <h2>prueba</h2>
             <p>A continuación se va a mostrar la información de todas las películas disponibles en el catálogo.</p>
             <!--Agregar un evento que cuando se de click al boton muestre el formulario de agrergar la pelicula -->
             <input type="button" class="btn btn-success btn-block" name="agregar_peli" ide="agregar_peli" value="Agregar Pelicula">
